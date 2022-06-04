@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     if (this.signUpForm.valid) {
       const formValue = JSON.stringify(this.signUpForm.value);
 
-      this._httpClient.post('/api/signupUsers' , formValue, HTTPOPTIONS).subscribe((response: SignupUser) => {
+      this._httpClient.post('api/signupUsers' , formValue, HTTPOPTIONS).subscribe((response: SignupUser) => {
         this.signUpForm.reset();
         this._router.navigate(['account/login']);
       });
