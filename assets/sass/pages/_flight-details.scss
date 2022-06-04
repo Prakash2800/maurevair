@@ -1,0 +1,41 @@
+.flightDetails {
+  width: 800px;
+  margin: 0 auto;
+
+  &__table {
+    width: 100%;
+    box-shadow: $primary-box-shadow;
+  }
+
+  &__header {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__row {
+    display: flex;
+    height: 56px;
+    border-bottom: 1px solid #0000001f;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__info {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+// move me from here
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+}

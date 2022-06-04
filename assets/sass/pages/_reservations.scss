@@ -1,0 +1,39 @@
+.create-reservation {
+  .seatType {
+    display: flex;
+
+    &__checkBox {
+      p {
+        font-family: $font-primary-regular;
+        font-size: $font-size-md;
+        margin-bottom: 0px;
+        margin-right: 35px;
+      }
+
+    }
+  }
+
+  .seatNumber {
+    display: flex;
+
+    p {
+      margin-bottom: 0px !important;
+    }
+    &__input {
+      margin-right: 100px;
+      width: 50px;
+      height: 40px;
+      font-family: $font-primary-regular;
+      font-size: $font-size-md;
+      padding-left: 5px;
+      margin-bottom: 5px;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+  }
+}
