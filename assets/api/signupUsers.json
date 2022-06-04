@@ -1,0 +1,22 @@
+{
+  "signupUsers": [
+    {
+      "firstName": "diana",
+      "lastName": "diana",
+      "userName": "diana",
+      "password": "diana",
+      "email": "diana@gmail.com",
+      "phone": "578787878",
+      "id": 1
+    },
+    {
+      "firstName": "prakash",
+      "lastName": "prakash",
+      "userName": "prakash",
+      "password": "prakash",
+      "email": "prakash@gmail.com",
+      "phone": "57885858",
+      "id": 2
+    }
+  ]
+}
