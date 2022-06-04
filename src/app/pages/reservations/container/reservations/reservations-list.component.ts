@@ -34,7 +34,7 @@ export class ReservationsListComponent implements OnInit {
   }
 
   private getReservationInfo(): void {
-    const urlGet = `api/reservations?userId=${this._userId}`
+    const urlGet = `/api/reservations?userId=${this._userId}`
     this._httpClient.get(urlGet).subscribe((response: ReservationModel[]) => {
       this.reservations = response;
     });
