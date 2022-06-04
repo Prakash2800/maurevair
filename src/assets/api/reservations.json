@@ -1,0 +1,80 @@
+{
+  "reservations": [
+    {
+      "flightId": "ACMkFvAAWT2A=sQBz=KAACR3",
+      "Origin": null,
+      "Destination": null,
+      "userId": 1,
+      "firstName": "diana",
+      "lastName": "diana",
+      "email": "diana@gmail.com",
+      "phone": "578787878",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": "",
+      "isPresentFirst": "",
+      "seatType": {
+        "Economy": 10,
+        "PremiumEconomy": "",
+        "First": ""
+      },
+      "id": 1
+    },
+    {
+      "flightId": "ABzsR3A=WCAkM2AQvAAKFCT=",
+      "Origin": null,
+      "Destination": null,
+      "userId": 1,
+      "firstName": "diana",
+      "lastName": "diana",
+      "email": "diana@gmail.com",
+      "phone": "578787878",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": true,
+      "isPresentFirst": true,
+      "seatType": {
+        "Economy": 10,
+        "PremiumEconomy": 1,
+        "First": 1
+      },
+      "id": 2
+    },
+    {
+      "flightId": "sQTWMC3R2BKAzkvFCAAAAA==",
+      "Origin": null,
+      "Destination": null,
+      "userId": 2,
+      "firstName": "prakash",
+      "lastName": "prakash",
+      "email": "prakash@gmail.com",
+      "phone": "57885858",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": false,
+      "isPresentFirst": false,
+      "seatType": {
+        "Economy": 1,
+        "PremiumEconomy": "",
+        "First": ""
+      },
+      "id": 3
+    },
+    {
+      "flightId": "ABzsR3A=WCAkM2AQvAAKFCT=",
+      "Origin": null,
+      "Destination": null,
+      "userId": 2,
+      "firstName": "prakash",
+      "lastName": "prakash",
+      "email": "prakash@gmail.com",
+      "phone": "57885858",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": true,
+      "isPresentFirst": true,
+      "seatType": {
+        "Economy": 10,
+        "PremiumEconomy": 1,
+        "First": 1
+      },
+      "id": 4
+    }
+  ]
+}
