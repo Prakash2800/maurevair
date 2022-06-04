@@ -1,0 +1,153 @@
+<div class="form-wrapper create-reservation" novalidate>
+  <h2 class="form-wrapper__title">Make a Reservation</h2>
+
+  <form [formGroup]="createReservation" novalidate>
+    <div class="input-group">
+
+      <div class="input-wrapper mr-25">
+
+        <mat-form-field appearance="fill"
+                        [ngClass]="{'input-error': (isSubmitted && createReservation.get('firstName')?.invalid)}">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" type="text"/>
+        </mat-form-field>
+
+        <span class="error"
+          *ngIf="isSubmitted && createReservation.get('firstName')?.value !== '' && createReservation.get('firstName')?.invalid">
+            First name must contain only letters
+        </span>
+        <span class="error" *ngIf="isSubmitted && createReservation.get('firstName')?.value === ''">
+          Field required
+        </span>
+
+      </div>
+
+      <div class="input-wrapper ml-25">
+        <mat-form-field appearance="fill"
+          [ngClass]="{'input-error': (isSubmitted && createReservation.get('lastName')?.invalid)}">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" type="text"/>
+        </mat-form-field>
+
+        <span class="error"
+          *ngIf="isSubmitted && createReservation.get('lastName')?.value !== '' && createReservation.get('lastName')?.invalid">
+            Last name must contain only letters
+        </span>
+        <span class="error" *ngIf="isSubmitted && createReservation.get('lastName')?.value === ''">
+          Field required
+        </span>
+      </div>
+    </div>
+
+    <div class="input-wrapper input-wrapper--fluid">
+      <mat-form-field appearance="fill" [ngClass]="{'input-error': (isSubmitted && createReservation.get('email')?.invalid)}">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email"/>
+      </mat-form-field>
+
+      <span class="error"
+            *ngIf="isSubmitted && createReservation.get('email')?.value !== '' && createReservation.get('email')?.invalid">
+                Please enter a valid email address
+            </span>
+      <span class="error" *ngIf="isSubmitted && createReservation.get('email')?.value === ''">
+        Field required
+      </span>
+    </div>
+
+    <div class="input-wrapper input-wrapper--fluid">
+      <mat-form-field appearance="fill" [ngClass]="{'input-error': (isSubmitted && createReservation.get('phone')?.invalid)}">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" type="tel"/>
+      </mat-form-field>
+
+      <span class="error"
+          *ngIf="isSubmitted && createReservation.get('phone')?.value !== '' && createReservation.get('phone')?.invalid">
+                Please enter a valid phone number
+      </span>
+      <span class="error" *ngIf="isSubmitted && createReservation.get('phone')?.value === ''">
+          Field required
+      </span>
+    </div>
+
+    <div class="input-wrapper input-wrapper--fluid">
+      <p class="input-wrapper__title">Select seat type</p>
+      <div class="seatType">
+        <div *ngIf="maxSeatEconomy > 0">
+          <mat-checkbox
+            class="seatType__checkBox"
+            [(ngModel)]="isEconomy"
+            formControlName="isPresentEconomy">
+            <p>Economy</p>
+          </mat-checkbox>
+        </div>
+
+        <div *ngIf="maxSeatPremiumEconomy > 0">
+          <mat-checkbox
+            class="seatType__checkBox"
+            [(ngModel)]="isPremium"
+            formControlName="isPresentPremiumEconomy">
+            <p class="checkbox__text">PremiumEconomy</p>
+          </mat-checkbox>
+        </div>
+
+        <div *ngIf="maxSeatFirst > 0">
+          <mat-checkbox
+            [(ngModel)]="isFirst"
+            class="seatType__checkBox"
+            formControlName="isPresentFirst">
+            <p class="checkbox__text">First</p>
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper input-wrapper--fluid" formGroupName="seatType">
+      <p class="input-wrapper__title">Enter Number of seats</p>
+
+      <div class="seatNumber">
+        <div *ngIf="maxSeatEconomy > 0">
+          <input class="seatNumber__input" [ngClass]="{ disabled: !isEconomy }" type="number" formControlName="Economy">
+          <p>Max: {{maxSeatEconomy }}</p>
+          <span class="error" *ngIf="isSubmitted && isEconomy && createReservation.get('seatType').get('Economy')?.value !== '' && createReservation.get('seatType').get('Economy')?.invalid">
+            Seat number is invalid
+          </span>
+          <span class="error" *ngIf="isSubmitted && isEconomy && createReservation.get('seatType').get('Economy')?.value === ''">
+            Field required
+          </span>
+        </div>
+
+        <div *ngIf="maxSeatPremiumEconomy > 0">
+          <input class="seatNumber__input"[ngClass]="{ disabled: !isPremium }" type="number" formControlName="PremiumEconomy">
+          <p>Max: {{ maxSeatPremiumEconomy }}</p>
+          <span class="error" *ngIf="isSubmitted && isPremium && createReservation.get('seatType').get('PremiumEconomy')?.value !== '' && createReservation.get('seatType').get('PremiumEconomy')?.invalid">
+            Seat number is invalid
+          </span>
+          <span class="error" *ngIf="isSubmitted && isPremium && createReservation.get('seatType').get('PremiumEconomy')?.value === ''">
+            Field required
+          </span>
+        </div>
+
+        <div *ngIf="maxSeatFirst > 0">
+          <input class="seatNumber__input" [ngClass]="{ disabled: !isFirst }" type="number" formControlName="First">
+          <p>Max: {{ maxSeatFirst }}</p>
+          <span class="error" *ngIf="isSubmitted && isFirst && createReservation.get('seatType').get('First')?.value !== '' && createReservation.get('seatType').get('First')?.invalid">
+            Seat number is invalid
+          </span>
+          <span class="error" *ngIf="isSubmitted && isFirst && createReservation.get('seatType').get('First')?.value === ''">
+            Field required
+          </span>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="form-wrapper__cta">
+      <button type="button" class="btn btn--primary" (click)="makeReservation()">
+        Create
+      </button>
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,9 @@
+<section class="profile" *ngIf="isUserLoggedIn">
+  <button (click)="showProfileInfo()" class="profile__abbr">
+      <span>{{ userAbbr }}</span>
+  </button>
+  <div class="profile__info" [@hideShow]="profileInfo ? 'opened' : 'closed'">
+      <p>Hi: {{ userFullName }}</p>
+      <button (click)="onLogout()" class="btn btn--primary">Log out</button>
+  </div>
+</section>

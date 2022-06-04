@@ -1,0 +1,57 @@
+<div class="flight">
+  <h2 class="flight__title">Revervations</h2>
+  <ul *ngIf="reservations.length > 0">
+    <li *ngFor="let reservation of reservations" class="flight__card">
+      <div class="flight__details">
+        <div class="flight__info">
+          <p class="flight__info__header">Flight Number: </p>
+          <p>{{ flightDetails?.FlightNumber }}</p>
+        </div>
+        <div class="flight__info">
+          <p class="flight__info__header">Name: </p>
+          <p>{{ reservation.firstName }}</p>
+        </div>
+        <div class="flight__info">
+          <p class="flight__info__header">Phone: </p>
+          <p>{{ reservation.phone }}</p>
+        </div>
+        <div class="flight__info">
+          <p class="flight__info__header">Arrival: </p>
+          <p>{{ getAirportName(flightDetails?.Origin) }}</p>
+        </div>
+        <div class="flight__info">
+          <p class="flight__info__header">Departure: </p>
+          <p>{{ getAirportName(flightDetails?.Destination) }}</p>
+        </div>
+      </div>
+      <div class="flight__details__header">
+        <p>Seats Reserved:</p>
+      </div>
+      <div class="flight__seats">
+        <ul>
+          <li>
+            <div class="flight__seats__info" *ngIf="reservation.seatType.Economy">
+              <span class="flight__seats__header"> Economy: </span>
+              <span> {{ reservation.seatType.Economy }} </span>
+            </div>
+          </li>
+          <li>
+            <div class="flight__seats__info"  *ngIf="reservation.seatType.PremiumEconomy">
+              <span class="flight__seats__header"> PremiumEconomy </span>
+              <span> {{ reservation.seatType.PremiumEconomy }} </span>
+            </div>
+          </li>
+          <li>
+            <div class="flight__seats__info"  *ngIf="reservation.seatType.First">
+              <span class="flight__seats__header"> First </span>
+              <span> {{ reservation.seatType.First }} </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <p *ngIf="reservations.length <= 0" class="flight__noReservation">No reservations has been yet.</p>
+</div>
+
+

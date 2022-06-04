@@ -1,0 +1,42 @@
+<div class="flight">
+  <h2 class="flight__title">Flights Available</h2>
+  <ul>
+    <li *ngFor="let flight of flights" class="flight__card">
+        <div class="flight__details">
+          <div class="flight__info">
+            <p class="flight__info__header">Origin: </p>
+            <p>{{ getAirportName(flight.Origin) }}</p>
+          </div>
+          <div class="flight__info">
+            <p class="flight__info__header">Destination: </p>
+            <p>{{ getAirportName(flight.Destination) }}</p>
+          </div>
+          <div class="flight__info">
+            <p class="flight__info__header">Arrival: </p>
+            <p>{{ flight.ArrivalTime | date }}</p>
+          </div>
+          <div class="flight__info">
+            <p class="flight__info__header">Departure: </p>
+            <p>{{ flight.DepartureTime | date }}</p>
+          </div>
+        </div>
+        <div class="flight__details__header">
+          <p>Seats Available:</p>
+        </div>
+        <div class="flight__seats">
+          <ul>
+            <li *ngFor="let bookingInfo of flight.BookingInfo">
+              <div class="flight__seats__info">
+                <span class="flight__seats__header">{{ bookingInfo.CabinClass }}: </span>
+                <span>{{ bookingInfo.SeatsAvailable }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="flight__cta">
+          <button (click)="makeReservation(flight.id)" class="btn btn--primary">Make reservation</button>
+        </div>
+    </li>
+  </ul>
+</div>
+

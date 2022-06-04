@@ -1,0 +1,85 @@
+.flight {
+  width: 800px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+
+  &__title {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  &__card {
+    padding: 25px;
+    border-radius: 4px;
+    border: 1px solid #0000001f;
+    margin-bottom: 40px;
+    box-shadow: $primary-box-shadow;
+    position: relative;
+  }
+
+  &__details {
+    display: flex;
+    margin-bottom: 25px;
+
+    &__header {
+      font-family: $font-primary-bold;
+      font-size: $font-size-md;
+      p {
+        margin-bottom: 5px;
+      }
+
+    }
+  }
+
+  &__info {
+    margin-right: 75px;
+
+    &__header {
+      font-family: $font-primary-bold;
+      font-size: $font-size-md;
+    }
+
+    p {
+      margin-bottom: 0px;
+      font-size: $font-size-md;
+
+      &:first-child {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  &__seats {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    ul {
+      display: flex;
+    }
+
+    &__info {
+      margin-right: 50px;
+    }
+
+    &__header {
+      font-family: $font-primary-bold;
+      font-size: $font-size-md;
+      margin-right: 5px;
+    }
+  }
+
+  &__cta {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__noReservation {
+    text-align: center;
+    font-family: $font-primary-medium;
+    font-size: $font-size-md;
+  }
+
+}

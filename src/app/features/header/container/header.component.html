@@ -1,0 +1,9 @@
+<header class="header">
+    <h2 class="header__title">Maurevair</h2>
+    <app-profile
+        [userAbbr]="userAbbr"
+        [userFullName]="userFullName"
+        [isUserLoggedIn]="isUserLoggedIn"
+        (emitLogout)="onLogout()">
+    </app-profile>
+</header>
