@@ -83,7 +83,7 @@
         },
         {
           "CabinClass": "Economy",
-          "SeatsAvailable": "60",
+          "SeatsAvailable": "59",
           "self-closing": "true"
         }
       ]
@@ -99,17 +99,17 @@
       "BookingInfo": [
         {
           "CabinClass": "First",
-          "SeatsAvailable": "2",
+          "SeatsAvailable": "1",
           "self-closing": "true"
         },
         {
           "CabinClass": "PremiumEconomy",
-          "SeatsAvailable": "55",
+          "SeatsAvailable": "54",
           "self-closing": "true"
         },
         {
           "CabinClass": "Economy",
-          "SeatsAvailable": "30",
+          "SeatsAvailable": "29",
           "self-closing": "true"
         }
       ]
@@ -122,11 +122,13 @@
       "Destination": "RRG",
       "DepartureTime": "2022-05-01T09:01:00.000+04:00",
       "ArrivalTime": "2022-05-01T11:00:00.000+04:00",
-      "BookingInfo": {
-        "CabinClass": "Economy",
-        "SeatsAvailable": "30",
-        "self-closing": "true"
-      }
+      "BookingInfo": [
+        {
+          "CabinClass": "Economy",
+          "SeatsAvailable": "29",
+          "self-closing": "true"
+        }
+      ]
     },
     {
       "id": "FszvWQCT3kAAAAR=K2ABM=CA",
@@ -277,52 +279,15 @@
   ],
   "reservations": [
     {
-      "flightId": "ACMkFvAAWT2A=sQBz=KAACR3",
-      "Origin": null,
-      "Destination": null,
-      "userId": 1,
-      "firstName": "diana",
-      "lastName": "diana",
-      "email": "diana@gmail.com",
-      "phone": "578787878",
-      "isPresentEconomy": true,
-      "isPresentPremiumEconomy": "",
-      "isPresentFirst": "",
-      "seatType": {
-        "Economy": 10,
-        "PremiumEconomy": "",
-        "First": ""
-      },
-      "id": 1
-    },
-    {
-      "flightId": "ABzsR3A=WCAkM2AQvAAKFCT=",
-      "Origin": null,
-      "Destination": null,
-      "userId": 1,
-      "firstName": "diana",
-      "lastName": "diana",
-      "email": "diana@gmail.com",
-      "phone": "578787878",
-      "isPresentEconomy": true,
-      "isPresentPremiumEconomy": true,
-      "isPresentFirst": true,
-      "seatType": {
-        "Economy": 10,
-        "PremiumEconomy": 1,
-        "First": 1
-      },
-      "id": 2
-    },
-    {
       "flightId": "sQTWMC3R2BKAzkvFCAAAAA==",
-      "Origin": null,
-      "Destination": null,
-      "userId": 2,
-      "firstName": "prakash",
-      "lastName": "prakash",
-      "email": "prakash@gmail.com",
-      "phone": "57885858",
+      "flightNumber": "1234",
+      "flightOrigin": "MRU",
+      "flightDestination": "CDG",
+      "userId": 3,
+      "firstName": "ccc",
+      "lastName": "ccc",
+      "email": "prakashbhunjun@yahoo.com",
+      "phone": "57828435",
       "isPresentEconomy": true,
       "isPresentPremiumEconomy": false,
       "isPresentFirst": false,
@@ -331,26 +296,47 @@
         "PremiumEconomy": "",
         "First": ""
       },
-      "id": 3
+      "id": 1
     },
     {
-      "flightId": "ABzsR3A=WCAkM2AQvAAKFCT=",
-      "Origin": null,
-      "Destination": null,
-      "userId": 2,
-      "firstName": "prakash",
-      "lastName": "prakash",
-      "email": "prakash@gmail.com",
-      "phone": "57885858",
+      "flightId": "sQTWMC3DPLdelksllDLdd==",
+      "flightNumber": "4231",
+      "flightOrigin": "CDG",
+      "flightDestination": "MRU",
+      "userId": 3,
+      "firstName": "ccc",
+      "lastName": "ccc",
+      "email": "prakashbhunjun@yahoo.com",
+      "phone": "57828435",
       "isPresentEconomy": true,
       "isPresentPremiumEconomy": true,
       "isPresentFirst": true,
       "seatType": {
-        "Economy": 10,
+        "Economy": 1,
         "PremiumEconomy": 1,
         "First": 1
       },
-      "id": 4
+      "id": 2
+    },
+    {
+      "flightId": "ACMkFvAAWT2A=sQBz=KAACR3",
+      "flightNumber": "5241",
+      "flightOrigin": "MRU",
+      "flightDestination": "RRG",
+      "userId": 3,
+      "firstName": "ccc",
+      "lastName": "ccc",
+      "email": "prakashbhunjun@yahoo.com",
+      "phone": "57828435",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": "",
+      "isPresentFirst": "",
+      "seatType": {
+        "Economy": 1,
+        "PremiumEconomy": "",
+        "First": ""
+      },
+      "id": 3
     }
   ],
   "signupUsers": [
