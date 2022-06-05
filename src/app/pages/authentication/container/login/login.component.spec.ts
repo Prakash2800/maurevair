@@ -10,7 +10,7 @@ import {UserService} from "../../../../shared/services/user.service";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 
 class Page {
   get submitButton() {
@@ -35,6 +35,7 @@ describe('LoginComponent', () => {
   let page: Page;
 
   let httpClient: HttpClient;
+  let httpController: HttpTestingController;
   let authService: AuthService;
   let userService: UserService;
 
@@ -56,9 +57,14 @@ describe('LoginComponent', () => {
     debugEl = fixture.debugElement;
     router = TestBed.inject(Router);
     httpClient = TestBed.inject(HttpClient);
+    httpController = TestBed.inject(HttpTestingController);
     page = new Page(fixture);
     fixture.detectChanges();
 
+  });
+
+  afterEach(() => {
+    httpController.verify();
   });
 
   it('is created', () => {
@@ -104,7 +110,6 @@ describe('LoginComponent', () => {
     password.setValue('prakash');
     page.submitButton.click();
     expect(loginComponent.loginForm.valid).toBeTruthy();
-
   });
 
 });

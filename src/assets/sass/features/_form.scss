@@ -19,4 +19,14 @@
       margin-bottom: 10px;
     }
 
+    &__link {
+      color: $primary-color;
+      font-family: $font-primary-medium;
+      font-size: $font-size-sm;
+
+      &:active {
+        color: $primary-color;
+      }
+    }
+
 }

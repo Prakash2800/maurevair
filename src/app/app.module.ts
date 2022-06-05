@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {flightNamePipe} from "./shared/pipes/flightName.pipe";
-import {FlightsService} from "./shared/services/flights.service";
 import {FlightsStoreService} from "./shared/services/flights-store.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AuthGuardService} from "./features/authentication/auth-guard.service";
@@ -29,7 +28,6 @@ import {NavBarModule} from "./features/nav-bar/nav-bar.module";
     NavBarModule
   ],
   providers: [
-    FlightsService,
     FlightsStoreService,
     AuthGuardService,
     AuthService,
