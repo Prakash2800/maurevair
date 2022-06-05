@@ -45,7 +45,8 @@ export class SignupComponent implements OnInit {
     if (this.signUpForm.valid) {
       const formValue = JSON.stringify(this.signUpForm.value);
 
-      this._httpClient.post('assets/api/signupUsers' , formValue, HTTPOPTIONS).subscribe((response: SignupUser) => {
+      const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/signupUsers'
+      this._httpClient.post(url,formValue, HTTPOPTIONS).subscribe((response: SignupUser) => {
         this.signUpForm.reset();
         this._router.navigate(['account/login']);
       });

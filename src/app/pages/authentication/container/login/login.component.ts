@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
   public onLogin(): void {
     this.isSubmitted = true;
     if(this.loginForm.valid) {
-      this._httpClient.get('/api/signupUsers').subscribe((response: UserModel[]) => {
+      const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/signupUsers'
+      this._httpClient.get(url).subscribe((response: UserModel[]) => {
         const userExist = response.find((user: UserModel) => {
           return user.userName === this.loginForm.value.userName && user.password === this.loginForm.value.password;
         });
