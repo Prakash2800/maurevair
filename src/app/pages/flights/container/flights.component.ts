@@ -22,7 +22,8 @@ export class FlightsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._httpClient.get('/api/flights').subscribe((response: FlightModel[]) => {
+    const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/flights'
+    this._httpClient.get(url).subscribe((response: FlightModel[]) => {
       this.flights = this._flightDataTransformService.flightDataTransform(response);
     })
   }

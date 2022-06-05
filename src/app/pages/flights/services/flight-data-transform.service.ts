@@ -57,7 +57,8 @@ export class FlightDataTransformService {
   }
 
   public getAirportsInfo() {
-    this._httpClient.get('/api/airports').subscribe((response: AirportModel[]) => {
+    const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/airports'
+    this._httpClient.get(url).subscribe((response: AirportModel[]) => {
       this.airports = response;
     });
   }

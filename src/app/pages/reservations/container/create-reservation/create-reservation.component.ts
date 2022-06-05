@@ -70,7 +70,8 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
       console.log('this.createReservation.value', this.createReservation.value);
 
       const formValue = JSON.stringify(this.createReservation.value);
-      this._httpClient.post('/api/reservations' , formValue, HTTPOPTIONS).subscribe((response: any) => {
+      const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/reservations'
+      this._httpClient.post(url , formValue, HTTPOPTIONS).subscribe((response: any) => {
       });
 
       this._router.navigate(['flights']);
@@ -106,11 +107,7 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
     const updatedbookingInfoToPatch = {
       "BookingInfo": bookingInfoToPatch
     }
-
-    console.log('updatedbookingInfoToPatch', updatedbookingInfoToPatch);
-
-
-    const flightUrl = `/api/flights/${this._flightId}`
+    const flightUrl = `https://my-json-server.typicode.com/Prakash2800/airdb/flights/${this._flightId}`
     this._httpClient.patch(flightUrl, updatedbookingInfoToPatch, HTTPOPTIONS).subscribe((response: any) => {
     });
 
@@ -158,7 +155,8 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
   }
 
   private getFlightDetails(): void {
-    this._httpClient.get('/api/flights').subscribe((flights: any) => {
+    const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/flights'
+    this._httpClient.get(url).subscribe((flights: any) => {
       this._flightDetails = flights.find( (flight: any) => {
         return flight.id === this._flightId;
       });

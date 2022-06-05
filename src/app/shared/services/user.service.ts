@@ -15,7 +15,8 @@ export class UserService {
   }
 
   public setCurrentUserInfo(userId: number): void {
-    this._httpClient.get('/api/signupUsers').subscribe((response:  UserModel[]) => {
+    const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/signupUsers'
+    this._httpClient.get(url).subscribe((response:  UserModel[]) => {
       const userInfo = response.find((user: UserModel) => {
         return user.id === userId;
       });
