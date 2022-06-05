@@ -19,20 +19,18 @@ import {ReservationModel} from "../../models/reservation.model";
 export class CreateReservationComponent implements OnInit, OnDestroy {
   public createReservation: FormGroup;
   public isSubmitted = false;
-  private _flightIdSubscription: Subscription | undefined;
-  private _flightId = '';
-
   public isEconomy = true;
   public isPremium = false;
   public isFirst = false;
+  public maxSeatEconomy: number;
+  public maxSeatPremiumEconomy: number;
+  public maxSeatFirst: number;
 
   private _flightDetails: any;
   private _bookingInfo: BookingInfo[];
   private _userInfo: UserModel;
-
-  public maxSeatEconomy: number;
-  public maxSeatPremiumEconomy: number;
-  public maxSeatFirst: number;
+  private _flightIdSubscription: Subscription | undefined;
+  private _flightId = '';
 
   constructor(
     private _flightsStoreService: FlightsStoreService,
@@ -67,8 +65,6 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
       this.updateFlightInfo(this.createReservation.value);
       this.updateReservationValue();
 
-      console.log('this.createReservation.value', this.createReservation.value);
-
       const formValue = JSON.stringify(this.createReservation.value);
       const url = 'https://my-json-server.typicode.com/Prakash2800/airdb/reservations'
       this._httpClient.post(url , formValue, HTTPOPTIONS).subscribe((response: any) => {
@@ -81,8 +77,6 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
   // needs improvements
   private updateFlightInfo(flightInfo: ReservationModel) {
     let bookingInfoToPatch = [];
-
-    console.log('bookingINfo', this._bookingInfo);
 
     const cabinFirst = this._bookingInfo.find(((item: any) => item.CabinClass === 'First'));
     if (cabinFirst) {
@@ -102,11 +96,10 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
       bookingInfoToPatch.push(cabinEconomy);
     }
 
-
-
     const updatedbookingInfoToPatch = {
       "BookingInfo": bookingInfoToPatch
     }
+
     const flightUrl = `https://my-json-server.typicode.com/Prakash2800/airdb/flights/${this._flightId}`
     this._httpClient.patch(flightUrl, updatedbookingInfoToPatch, HTTPOPTIONS).subscribe((response: any) => {
     });
@@ -166,14 +159,14 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
     })
   }
 
-  private seatsInfo() {
+  private seatsInfo(): void {
     this.maxSeatEconomy = this.getSeatsAvailableByCategory('Economy');
     this.maxSeatPremiumEconomy = this.getSeatsAvailableByCategory('PremiumEconomy');
     this.maxSeatFirst = this.getSeatsAvailableByCategory('First');
     this.setValidators();
   }
 
-  private setValidators() {
+  private setValidators(): void {
     this.createReservation.get('seatType').get('Economy').setValidators([Validators.min(1), Validators.max(this.maxSeatEconomy)]);
     this.createReservation.get('seatType').get('PremiumEconomy').setValidators([Validators.min(1), Validators.max(this.maxSeatPremiumEconomy)]);
     this.createReservation.get('seatType').get('First').setValidators([Validators.min(1), Validators.max(this.maxSeatFirst)]);

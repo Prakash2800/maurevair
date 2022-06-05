@@ -2,7 +2,6 @@ import {HttpHeaders} from "@angular/common/http";
 
 export const HTTPOPTIONS = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type':  'application/json'
   })
 };;
