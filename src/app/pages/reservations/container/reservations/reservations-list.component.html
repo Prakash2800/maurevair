@@ -1,11 +1,11 @@
 <div class="flight">
   <h2 class="flight__title">Revervations</h2>
-  <ul *ngIf="reservations.length > 0">
+  <ul *ngIf="reservations && reservations.length > 0">
     <li *ngFor="let reservation of reservations" class="flight__card">
       <div class="flight__details">
         <div class="flight__info">
           <p class="flight__info__header">Flight Number: </p>
-          <p>{{ flightDetails?.FlightNumber }}</p>
+          <p>{{ reservation.flightNumber }}</p>
         </div>
         <div class="flight__info">
           <p class="flight__info__header">Name: </p>
@@ -17,11 +17,11 @@
         </div>
         <div class="flight__info">
           <p class="flight__info__header">Arrival: </p>
-          <p>{{ getAirportName(flightDetails?.Origin) }}</p>
+          <p>{{ getAirportName(reservation.flightDestination) }}</p>
         </div>
         <div class="flight__info">
           <p class="flight__info__header">Departure: </p>
-          <p>{{ getAirportName(flightDetails?.Destination) }}</p>
+          <p>{{ getAirportName(reservation.flightOrigin) }}</p>
         </div>
       </div>
       <div class="flight__details__header">
@@ -51,7 +51,7 @@
       </div>
     </li>
   </ul>
-  <p *ngIf="reservations.length <= 0" class="flight__noReservation">No reservations has been yet.</p>
+  <p *ngIf="reservations && reservations.length <= 0" class="flight__noReservation">No reservations has been yet.</p>
 </div>
 
 

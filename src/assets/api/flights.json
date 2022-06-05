@@ -71,7 +71,7 @@
       "Carrier": "MRV",
       "FlightNumber": "8910",
       "Origin": "RRG",
-      "Destination": "MUR",
+      "Destination": "MRU",
       "DepartureTime": "2022-05-02T08:08:00.000+04:00",
       "ArrivalTime": "2022-05-02T10:26:00.000+04:00",
       "BookingInfo": {
@@ -190,7 +190,7 @@
       "id": "=CvATzKkACFRMQ23sWAABAA=",
       "Carrier": "MRV",
       "FlightNumber": "5878",
-      "Origin": "MUR",
+      "Origin": "MRU",
       "Destination": "TNR",
       "DepartureTime": "2022-05-07T12:08:00.000+04:00",
       "ArrivalTime": "2022-05-06T14:09:00.000+03:00",

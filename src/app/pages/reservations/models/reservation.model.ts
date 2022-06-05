@@ -1,5 +1,8 @@
 export interface ReservationModel {
   flightId: string,
+  flightNumber: number,
+  flightOrigin: string,
+  flightDestination: string,
   email: string,
   firstName: string,
   id: number

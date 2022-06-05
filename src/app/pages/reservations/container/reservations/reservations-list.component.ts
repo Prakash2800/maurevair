@@ -10,7 +10,7 @@ import {FlightDataTransformService} from "../../../flights/services/flight-data-
   selector: 'app-reservations-list',
   templateUrl: './reservations-list.component.html'
 })
-export class ReservationsListComponent implements OnInit {
+export class ReservationsListComponent {
 
   public reservations: ReservationModel[];
   public flightDetails: FlightModel;
@@ -22,11 +22,7 @@ export class ReservationsListComponent implements OnInit {
     private _flightDataTransformService: FlightDataTransformService
   ) {
     this.getCurrentUserId();
-  }
-
-  ngOnInit(): void {
     this.getReservationInfo();
-    this.getFlightDetails();
   }
 
   public getAirportName(airportCode: string): string {
@@ -37,6 +33,7 @@ export class ReservationsListComponent implements OnInit {
     const urlGet = `/api/reservations?userId=${this._userId}`
     this._httpClient.get(urlGet).subscribe((response: ReservationModel[]) => {
       this.reservations = response;
+      console.log('this.reservations', this.reservations);
     });
   }
 
@@ -45,15 +42,4 @@ export class ReservationsListComponent implements OnInit {
       this._userId = userInfo.id;
     })
   }
-
-  private getFlightDetails(): void {
-    this._httpClient.get('/api/flights').subscribe((flights: FlightApiModel[]) => {
-      const flightDetails = this._flightDataTransformService.flightDataTransform(flights);
-      this.flightDetails = flightDetails.find( (flight: FlightModel) => {
-        return flight.id === this.reservations[0]?.flightId;
-      });
-    })
-
-  }
-
 }

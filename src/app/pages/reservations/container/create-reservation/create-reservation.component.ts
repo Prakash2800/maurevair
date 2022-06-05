@@ -5,10 +5,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {HTTPOPTIONS} from "../../../../shared/constant/http-options.constants";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BookingInfo} from "../../../flights/models/flight.model";
+import {BookingInfo, FlightApiModel} from "../../../flights/models/flight.model";
 import {UserService} from "../../../../shared/services/user.service";
 import {UserModel} from "../../../authentication/model/user.model";
 import {FlightDataTransformService} from "../../../flights/services/flight-data-transform.service";
+import {AirportModel} from "../../../flights/models/airport.model";
+import {ReservationModel} from "../../models/reservation.model";
 
 @Component({
   selector: 'app-create-reservation',
@@ -63,24 +65,62 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
     if (this.createReservation.valid) {
 
       this.updateFlightInfo(this.createReservation.value);
+      this.updateReservationValue();
+
+      console.log('this.createReservation.value', this.createReservation.value);
+
       const formValue = JSON.stringify(this.createReservation.value);
       this._httpClient.post('/api/reservations' , formValue, HTTPOPTIONS).subscribe((response: any) => {
       });
+
+      this._router.navigate(['flights']);
     }
   }
 
-  // to do : blocking issue here
-  private updateFlightInfo(flightInfo: any): void {
-    const test = {
-      "Origin": 'yoyo',
-      "Destination": "lala",
+  // needs improvements
+  private updateFlightInfo(flightInfo: ReservationModel) {
+    let bookingInfoToPatch = [];
+
+    console.log('bookingINfo', this._bookingInfo);
+
+    const cabinFirst = this._bookingInfo.find(((item: any) => item.CabinClass === 'First'));
+    if (cabinFirst) {
+      cabinFirst.SeatsAvailable = (flightInfo.seatType.First > 0) ? (parseInt(cabinFirst.SeatsAvailable) - flightInfo.seatType.First).toString() : cabinFirst.SeatsAvailable;
+      bookingInfoToPatch.push(cabinFirst)
     }
 
-    // this._httpClient.patch('/api/flights/sQTWMC3R2BKAzkvFCAAAAA==' , test, HTTPOPTIONS).subscribe((response: any) => {
-    //   console.log('response', response);
-    // });
+    const cabinPremiumEconomy = this._bookingInfo.find(((item: any) => item.CabinClass === 'PremiumEconomy'));
+    if (cabinPremiumEconomy) {
+      cabinPremiumEconomy.SeatsAvailable = (flightInfo.seatType.PremiumEconomy > 0) ? (parseInt(cabinPremiumEconomy.SeatsAvailable) - flightInfo.seatType.PremiumEconomy).toString() : cabinPremiumEconomy.SeatsAvailable;
+      bookingInfoToPatch.push(cabinPremiumEconomy)
+    }
 
-    // this._router.navigate(['flights']);
+    const cabinEconomy = this._bookingInfo.find(((item: any) => item.CabinClass === 'Economy'));
+    if (cabinEconomy) {
+      cabinEconomy.SeatsAvailable = (flightInfo.seatType.Economy > 0) ? (parseInt(cabinEconomy.SeatsAvailable) - flightInfo.seatType.Economy).toString() : cabinEconomy.SeatsAvailable;
+      bookingInfoToPatch.push(cabinEconomy);
+    }
+
+
+
+    const updatedbookingInfoToPatch = {
+      "BookingInfo": bookingInfoToPatch
+    }
+
+    console.log('updatedbookingInfoToPatch', updatedbookingInfoToPatch);
+
+
+    const flightUrl = `/api/flights/${this._flightId}`
+    this._httpClient.patch(flightUrl, updatedbookingInfoToPatch, HTTPOPTIONS).subscribe((response: any) => {
+    });
+
+
+  }
+
+  private updateReservationValue(): void {
+    this.createReservation.get('flightNumber').setValue(this._flightDetails.FlightNumber);
+    this.createReservation.get('flightOrigin').setValue(this._flightDetails.Origin);
+    this.createReservation.get('flightDestination').setValue(this._flightDetails.Destination);
   }
 
   private getFlightId(): void {
@@ -93,8 +133,9 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
 
     this.createReservation = this._fb.group({
       flightId: [this._flightId, ''],
-      Origin: [this._flightDetails?.Origin, ''],
-      Destination: [this._flightDetails?.Destination, ''],
+      flightNumber: ['', ''],
+      flightOrigin: ['', ''],
+      flightDestination: ['', ''],
       userId: [this._userInfo.id, ''],
       firstName: [this._userInfo.firstName, [Validators.required, Validators.pattern(letters)]],
       lastName: [this._userInfo.lastName, [Validators.required, Validators.pattern(letters)]],
