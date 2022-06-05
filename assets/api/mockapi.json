@@ -73,17 +73,17 @@
       "BookingInfo": [
         {
           "CabinClass": "First",
-          "SeatsAvailable": "10",
+          "SeatsAvailable": "5",
           "self-closing": "true"
         },
         {
           "CabinClass": "PremiumEconomy",
-          "SeatsAvailable": "50",
+          "SeatsAvailable": "40",
           "self-closing": "true"
         },
         {
           "CabinClass": "Economy",
-          "SeatsAvailable": "59",
+          "SeatsAvailable": "58",
           "self-closing": "true"
         }
       ]
@@ -193,7 +193,7 @@
         },
         {
           "CabinClass": "Economy",
-          "SeatsAvailable": "42",
+          "SeatsAvailable": "41",
           "self-closing": "true"
         }
       ]
@@ -235,17 +235,17 @@
       "BookingInfo": [
         {
           "CabinClass": "First",
-          "SeatsAvailable": "23",
+          "SeatsAvailable": "21",
           "self-closing": "true"
         },
         {
           "CabinClass": "PremiumEconomy",
-          "SeatsAvailable": "65",
+          "SeatsAvailable": "63",
           "self-closing": "true"
         },
         {
           "CabinClass": "Economy",
-          "SeatsAvailable": "42",
+          "SeatsAvailable": "41",
           "self-closing": "true"
         }
       ]
@@ -337,6 +337,66 @@
         "First": ""
       },
       "id": 3
+    },
+    {
+      "flightId": "sQTWMC3R2BKAzkvFCAAAAA==",
+      "flightNumber": "1234",
+      "flightOrigin": "MRU",
+      "flightDestination": "CDG",
+      "userId": 2,
+      "firstName": "prakash",
+      "lastName": "prakash",
+      "email": "prakash@gmail.com",
+      "phone": "57885858",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": true,
+      "isPresentFirst": true,
+      "seatType": {
+        "Economy": 1,
+        "PremiumEconomy": 10,
+        "First": 5
+      },
+      "id": 4
+    },
+    {
+      "flightId": "ABzsR3A=WCAkM2AQvAAKFCT=",
+      "flightNumber": "7895",
+      "flightOrigin": "SIN",
+      "flightDestination": "MRU",
+      "userId": 2,
+      "firstName": "prakash",
+      "lastName": "prakash",
+      "email": "prakash@gmail.com",
+      "phone": "57885858",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": false,
+      "isPresentFirst": false,
+      "seatType": {
+        "Economy": 1,
+        "PremiumEconomy": "",
+        "First": ""
+      },
+      "id": 5
+    },
+    {
+      "flightId": "=CvATzKkACFRMQ23sWAABAA=",
+      "flightNumber": "5879",
+      "flightOrigin": "TNR",
+      "flightDestination": "MRU",
+      "userId": 2,
+      "firstName": "prakash",
+      "lastName": "prakash",
+      "email": "prakash@gmail.com",
+      "phone": "57885858",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": true,
+      "isPresentFirst": true,
+      "seatType": {
+        "Economy": 1,
+        "PremiumEconomy": 2,
+        "First": 2
+      },
+      "id": 6
     }
   ],
   "signupUsers": [
