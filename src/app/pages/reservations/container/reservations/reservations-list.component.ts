@@ -31,7 +31,7 @@ export class ReservationsListComponent {
 
   private getReservationInfo(): void {
 
-    const urlGet = `https://my-json-server.typicode.com/Prakash2800/airdb/reservations?userId=${this._userId}`
+    const urlGet = `/api/reservations?userId=${this._userId}`
     this._httpClient.get(urlGet).subscribe((response: ReservationModel[]) => {
       this.reservations = response;
     });
