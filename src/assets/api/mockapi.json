@@ -78,7 +78,7 @@
         },
         {
           "CabinClass": "PremiumEconomy",
-          "SeatsAvailable": "40",
+          "SeatsAvailable": "39",
           "self-closing": "true"
         },
         {
@@ -397,6 +397,26 @@
         "First": 2
       },
       "id": 6
+    },
+    {
+      "flightId": "sQTWMC3R2BKAzkvFCAAAAA==",
+      "flightNumber": "1234",
+      "flightOrigin": "MRU",
+      "flightDestination": "CDG",
+      "userId": 4,
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "prakashbhunjun@yahoo.com",
+      "phone": "57828435",
+      "isPresentEconomy": true,
+      "isPresentPremiumEconomy": true,
+      "isPresentFirst": false,
+      "seatType": {
+        "Economy": null,
+        "PremiumEconomy": 1,
+        "First": ""
+      },
+      "id": 7
     }
   ],
   "signupUsers": [
@@ -426,6 +446,15 @@
       "email": "prakashbhunjun@yahoo.com",
       "phone": "57828435",
       "id": 3
+    },
+    {
+      "firstName": "admin",
+      "lastName": "admin",
+      "userName": "admin",
+      "password": "admin",
+      "email": "prakashbhunjun@yahoo.com",
+      "phone": "57828435",
+      "id": 4
     }
   ]
 }
