@@ -1,5 +1,5 @@
 {
-  "airports": [
+  "Airports": [
     {
       "country": "Maurice",
       "region": "Grand Port",
@@ -61,7 +61,7 @@
       "airportCode": "SIN"
     }
   ],
-  "flights": [
+  "Flights": [
     {
       "id": "sQTWMC3R2BKAzkvFCAAAAA==",
       "Carrier": "MRV",
@@ -277,7 +277,7 @@
       ]
     }
   ],
-  "reservations": [
+  "Reservations": [
     {
       "flightId": "sQTWMC3R2BKAzkvFCAAAAA==",
       "flightNumber": "1234",
@@ -339,7 +339,7 @@
       "id": 3
     }
   ],
-  "signupUsers": [
+  "SignupUsers": [
     {
       "firstName": "diana",
       "lastName": "diana",
