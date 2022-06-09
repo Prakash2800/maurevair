@@ -9,7 +9,6 @@ import {BookingInfo, FlightApiModel} from "../../../flights/models/flight.model"
 import {UserService} from "../../../../shared/services/user.service";
 import {UserModel} from "../../../authentication/model/user.model";
 import {FlightDataTransformService} from "../../../flights/services/flight-data-transform.service";
-import {AirportModel} from "../../../flights/models/airport.model";
 import {ReservationModel} from "../../models/reservation.model";
 
 @Component({
@@ -26,7 +25,7 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
   public maxSeatPremiumEconomy: number;
   public maxSeatFirst: number;
 
-  private _flightDetails: any;
+  private _flightDetails: FlightApiModel;
   private _bookingInfo: BookingInfo[];
   private _userInfo: UserModel;
   private _flightIdSubscription: Subscription | undefined;
@@ -69,41 +68,30 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
       this._httpClient.post('/api/reservations' , formValue, HTTPOPTIONS).subscribe((response: any) => {
       });
 
-      this._router.navigate(['flights']);
     }
   }
 
-  // needs improvements
   private updateFlightInfo(flightInfo: ReservationModel) {
-    let bookingInfoToPatch = [];
+    const seatTypes = ['First', 'PremiumEconomy', 'Economy'];
 
-    const cabinFirst = this._bookingInfo.find(((item: any) => item.CabinClass === 'First'));
-    if (cabinFirst) {
-      cabinFirst.SeatsAvailable = (flightInfo.seatType.First > 0) ? (parseInt(cabinFirst.SeatsAvailable) - flightInfo.seatType.First).toString() : cabinFirst.SeatsAvailable;
-      bookingInfoToPatch.push(cabinFirst)
-    }
+    const isSeatChecked = seatTypes.map( (type: string) => flightInfo['isPresent'+type] === true ? type : '').filter( (type: string) => type !== '');
 
-    const cabinPremiumEconomy = this._bookingInfo.find(((item: any) => item.CabinClass === 'PremiumEconomy'));
-    if (cabinPremiumEconomy) {
-      cabinPremiumEconomy.SeatsAvailable = (flightInfo.seatType.PremiumEconomy > 0) ? (parseInt(cabinPremiumEconomy.SeatsAvailable) - flightInfo.seatType.PremiumEconomy).toString() : cabinPremiumEconomy.SeatsAvailable;
-      bookingInfoToPatch.push(cabinPremiumEconomy)
-    }
-
-    const cabinEconomy = this._bookingInfo.find(((item: any) => item.CabinClass === 'Economy'));
-    if (cabinEconomy) {
-      cabinEconomy.SeatsAvailable = (flightInfo.seatType.Economy > 0) ? (parseInt(cabinEconomy.SeatsAvailable) - flightInfo.seatType.Economy).toString() : cabinEconomy.SeatsAvailable;
-      bookingInfoToPatch.push(cabinEconomy);
-    }
+    isSeatChecked.map( (seat: string) => this._bookingInfo.map( (bookingInfo: BookingInfo) => {
+      if (bookingInfo.CabinClass === seat)  {
+        bookingInfo.SeatsAvailable = JSON.stringify((parseInt(bookingInfo.SeatsAvailable) - flightInfo.seatType[seat]));
+      }
+    }));
 
     const updatedbookingInfoToPatch = {
-      "BookingInfo": bookingInfoToPatch
-    }
+      "BookingInfo": this._bookingInfo
+    };
 
     const flightUrl = `/api/flights/${this._flightId}`
-    this._httpClient.patch(flightUrl, updatedbookingInfoToPatch, HTTPOPTIONS).subscribe((response: any) => {
+    this._httpClient.patch(flightUrl, updatedbookingInfoToPatch, HTTPOPTIONS).subscribe((response: FlightApiModel) => {
+
     });
 
-
+    this._router.navigate(['flights']);
   }
 
   private updateReservationValue(): void {
@@ -147,8 +135,8 @@ export class CreateReservationComponent implements OnInit, OnDestroy {
   }
 
   private getFlightDetails(): void {
-    this._httpClient.get('/api/flights').subscribe((flights: any) => {
-      this._flightDetails = flights.find( (flight: any) => {
+    this._httpClient.get('/api/flights').subscribe((flights: FlightApiModel[]) => {
+      this._flightDetails = flights.find( (flight: FlightApiModel) => {
         return flight.id === this._flightId;
       });
 

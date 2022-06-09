@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.pattern(letters)]],
       lastName: ['', [Validators.required, Validators.pattern(letters)]],
       userName: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(2)]], //to do , change min length after tests
+      password: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.pattern(emailReg)]],
       phone: ['', [Validators.required, Validators.minLength(6)]]
     });

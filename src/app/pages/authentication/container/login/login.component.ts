@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   private setUpLoginForm(): void {
     this.loginForm = this._fb.group({
       userName: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(2)]]
+      password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
 }
