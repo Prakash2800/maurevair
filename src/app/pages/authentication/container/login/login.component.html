@@ -18,8 +18,8 @@
                 <mat-label>Password</mat-label>
                 <input formControlName="password" matInput type="password" />
             </mat-form-field>
-            <span *ngIf="isSubmitted && loginForm.get('password')?.value === ''" class="error">Field required</span><br>
-            <span *ngIf="isSubmitted && loginForm.get('password')?.value !== '' && loginForm.get('password')?.invalid" class="error">Minimum 6 characters</span>
+            <span *ngIf="isSubmitted && loginForm.get('password')?.value === ''" class="error">Field required -</span><br>
+            <span *ngIf="isSubmitted && loginForm.get('password')?.value !== '' && loginForm.get('password')?.invalid" class="error errorPswLength">Minimum 5 characters</span>
         </div>
     </div>
 

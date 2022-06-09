@@ -1,10 +1,16 @@
 .navigation {
-  top: 200px;
-  left: 20px;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 100%;
   position: fixed;
-  background-color: rgba(161, 191, 217, 0.3);
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 4px;
+
+  ul {
+    margin-top: 180px;
+  }
 
   &__list {
     margin-bottom: 20px;
@@ -28,7 +34,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        background-color: rgba(#ffffff, 0.75);
+        background-color: rgba(#000000, 0.75);
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
         transition: $general-transition;
